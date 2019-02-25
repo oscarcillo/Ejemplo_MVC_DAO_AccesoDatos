@@ -37,7 +37,7 @@ public class ControllerJugador {
 	}
 	
 	public void viewJugadores() {
-		/*
+		
 		List<Jugador> jugadores = new ArrayList<Jugador>();
 		JugadorDao dao = new JugadorDaoMySQLImp();
 		
@@ -45,12 +45,12 @@ public class ControllerJugador {
 		 jugadores = dao.read();
 		 vista.viewTodosJugadores(jugadores);
 		
-		*/
 		
-		JugadorDao daoMongo = new JugadorDaoMongoDBImp();
+		
+		/*JugadorDao daoMongo = new JugadorDaoMongoDBImp();
 		List<Jugador> jugadoresMongo = new ArrayList<Jugador>();
 		jugadoresMongo = daoMongo.read();
-		vista.viewTodosJugadores(jugadoresMongo);
+		vista.viewTodosJugadores(jugadoresMongo);*/
 		
 		
 	}

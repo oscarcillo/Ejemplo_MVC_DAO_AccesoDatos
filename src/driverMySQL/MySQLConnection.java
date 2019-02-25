@@ -10,8 +10,8 @@ public class MySQLConnection {
 	public static Connection conectar() {
 		Connection con = null;
 		
-		String user = "user_baloncesto";
-		String pass = "123456";
+		String user = "root";
+		String pass = "1234";
 		
 		try {
 			
@@ -21,7 +21,7 @@ public class MySQLConnection {
 			datos.put("user", user);
 			datos.put("password", pass);
 			
-			String url = "jdbc:mysql://localhost:3306/nba";
+			String url = "jdbc:mysql://localhost:3308/nba?serverTimezone=UTC";
 			
 			con = DriverManager.getConnection(url, datos);
 			if (con != null) {
