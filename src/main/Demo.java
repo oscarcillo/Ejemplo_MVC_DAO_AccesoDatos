@@ -2,6 +2,7 @@ package main;
 
 import controllers.ControllerEquipos;
 import controllers.ControllerJugador;
+import modelos.Equipos;
 import modelos.Jugador;
 
 public class Demo {
@@ -30,6 +31,8 @@ public class Demo {
 		controller.remove(j);
 		*/
 		controller.viewJugadores();
+		controllerEquipos.create(new Equipos("prueba", 
+				"prueba", "prueba", "prueba"));
 		controllerEquipos.viewEquipos();
 
 	}

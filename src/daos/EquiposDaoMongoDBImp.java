@@ -40,10 +40,10 @@ public class EquiposDaoMongoDBImp implements EquiposDao {
 			
 			Document doc = new Document();
 			
-			doc.append("nombre", equipo.getNombre());
-			doc.append("ciudad",equipo.getCiudad());
-			doc.append("conferencia",equipo.getConferencia());
-			doc.append("division", equipo.getDivision());
+			doc.append("Nombre", equipo.getNombre());
+			doc.append("Ciudad",equipo.getCiudad());
+			doc.append("Conferencia",equipo.getConferencia());
+			doc.append("Division", equipo.getDivision());
 	
 			coleccion.insertOne(doc);
 			created = true;
