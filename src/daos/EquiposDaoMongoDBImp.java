@@ -2,17 +2,13 @@ package daos;
 
 
 import java.util.List;
-
 import driverMongoDB.MongoDBConnection;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-
 import com.mongodb.MongoClient;
 import com.mongodb.client.*;
-
-
 import com.mongodb.client.FindIterable; 
 import com.mongodb.client.MongoCollection; 
 import com.mongodb.client.MongoDatabase;  
@@ -25,6 +21,9 @@ import idaos.EquiposDao;
 import idaos.JugadorDao;
 import modelos.Equipos;
 import modelos.Jugador;
+
+import static com.mongodb.client.model.Filters.*;
+import static com.mongodb.client.model.Updates.*;
 
 public class EquiposDaoMongoDBImp implements EquiposDao {
 
@@ -86,14 +85,38 @@ public class EquiposDaoMongoDBImp implements EquiposDao {
 
 	@Override
 	public boolean update(Equipos equipo) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		boolean updated = false;
+		
+		try {
+			MongoDBConnection mdbc = new MongoDBConnection();
+			MongoCollection coleccion= mdbc.getCollection("equipos");
+			
+			coleccion.updateOne(eq("Nombre", equipo.getNombre()), 
+					combine(set("Ciudad", equipo.getCiudad()), 
+							set("Conferencia", equipo.getConferencia()), 
+							set("Division", equipo.getDivision())));
+			updated = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return updated;
 	}
 
 	@Override
 	public boolean delete(Equipos equipo) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		boolean deleted = false;
+		
+		try {
+			MongoDBConnection mdbc = new MongoDBConnection();
+			MongoCollection coleccion= mdbc.getCollection("equipos");
+			coleccion.deleteMany(eq("Nombre", equipo.getNombre()));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return deleted;
 	}
-
+	
 }

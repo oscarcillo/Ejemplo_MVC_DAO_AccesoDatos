@@ -30,13 +30,13 @@ public class ControllerEquipos {
 	}
 	
 	public void update(Equipos equipo) {
-		//JugadorDao dao = new JugadorDaoMySQLImp();
-		//dao.update(equipo);
+		EquiposDao dao = new EquiposDaoMongoDBImp();
+		dao.update(equipo);
 	}
 	
 	public void remove(Equipos equipo) {
-		//JugadorDao dao = new JugadorDaoMySQLImp();
-		//dao.delete(jugador);
+		EquiposDao dao = new EquiposDaoMongoDBImp();
+		dao.delete(equipo);
 	}
 	
 	public void viewEquipos() {
@@ -44,18 +44,13 @@ public class ControllerEquipos {
 		/*List<Equipos> equipos = new ArrayList<Equipos>();
 		JugadorDao dao = new JugadorDaoMySQLImp();
 		
-		
 		 equipos = dao.read();
 		 vista.viewTodosJugadores(equipos);*/
-		
-		
 		
 		EquiposDao daoMongo = new EquiposDaoMongoDBImp();
 		List<Equipos> equiposMongo = new ArrayList<Equipos>();
 		equiposMongo = daoMongo.read();
 		vista.viewTodosEquipos((equiposMongo));
-		
-		
 	}
 	
 	public void viewEquipos(Equipos equipo) {
